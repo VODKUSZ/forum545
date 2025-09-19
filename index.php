@@ -1,11 +1,17 @@
 <?php
+$fileName="data.json";
+if(file_exists($fileName)){
+    $JsonString= file_get_contents($fileName);
+    $topics= json_decode($JsonString);
+}
+else{
+    $topics=[];
+}
 $szoveg="";
 if(isset($_POST['topic'])){
-    $topics=[];
     array_push($topics,$_POST['topic']);
     $JsonString = json_encode($topics);
     $szoveg=$JsonString;
-    $fileName="data.json";
     file_put_contents($fileName,$JsonString);
 }
 ?>
