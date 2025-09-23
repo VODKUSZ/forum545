@@ -23,8 +23,13 @@ if(isset($_POST['topic'])){
 </head>
 <body>
     <h1>Témák:</h1>
+    <ul>
     <?php
+    foreach ($topics as $key => $value) {
+     echo '<li>'. ($key+1) . '.' . $value;   
+     }
     ?>
+    </ul>
     <form method="post">
         <input type="text" name="topic">
         <input type="submit" value="Add">
