@@ -1,1 +1,18 @@
-["cica","Kutya","cica","Kutya\u0171","Kutya\u0171","cica"]
+[
+    {
+        "id": 1,
+        "name": "cica"
+    },
+    {
+        "id": 2,
+        "name": "Kutya"
+    },
+    {
+        "id": 3,
+        "name": "Macska"
+    },
+    {
+        "id": 4,
+        "name": "assd"
+    }
+]
