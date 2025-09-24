@@ -22,6 +22,7 @@ if (isset($_POST['action'])) {
             "id" => $newId,
             "name" => $_POST['topic']
         ]);
+        //itt kezdodik a torles
     } elseif ($_POST['action'] == 'delete') {
         $topicIdToDelete = $_POST['topic'];
         
@@ -33,6 +34,7 @@ if (isset($_POST['action'])) {
         }
     }
     
+
     
     $JsonString = json_encode(array_values($topics), JSON_PRETTY_PRINT);
     file_put_contents($fileName, $JsonString);
