@@ -9,25 +9,35 @@ else{
 }
 
 
-if(isset($_POST['action'])){
-    $lastID = 0;
-    if (!empty($topics)) {
-        $lastItem = end($topics);
-        $lastID = $lastItem -> id;
+if (isset($_POST['action'])) {
+    if ($_POST['action'] == 'add') {
+        $lastID = 0;
+        if (!empty($topics)) {
+            $lastItem = end($topics);
+            $lastID = $lastItem->id;
+        }
+        $newId = $lastID + 1;
+        
+        array_push($topics, (object)[
+            "id" => $newId,
+            "name" => $_POST['topic']
+        ]);
+    } elseif ($_POST['action'] == 'delete') {
+        $topicIdToDelete = $_POST['topic'];
+        
+        foreach ($topics as $key => $value) {
+            if ($value->id == $topicIdToDelete) {
+                unset($topics[$key]);
+                break;
+            }
+        }
     }
-    $newId = $lastID +1;
-    if($_POST['action'] == 'add') {
-    array_push($topics,(object)
-    [
-        "id" => $newId ,
-        "name" => $_POST['topic']
-    ]
-    );
-    $JsonString = json_encode($topics , JSON_PRETTY_PRINT);
-    file_put_contents($fileName,$JsonString);
-    }
-
+    
+    
+    $JsonString = json_encode(array_values($topics), JSON_PRETTY_PRINT);
+    file_put_contents($fileName, $JsonString);
 }
+
 
 ?>
 <!DOCTYPE html>
