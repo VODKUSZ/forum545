@@ -1,18 +1,10 @@
 [
     {
-        "id": 2,
-        "name": "kutya"
-    },
-    {
         "id": 3,
-        "name": "kutya"
+        "name": "asd"
     },
     {
         "id": 4,
-        "name": "cica"
-    },
-    {
-        "id": 5,
         "name": "asd"
     }
 ]

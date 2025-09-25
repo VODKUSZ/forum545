@@ -24,7 +24,7 @@ if (isset($_POST['action'])) {
         ]);
         //itt kezdodik a torles
     } elseif ($_POST['action'] == 'delete') {
-        $topicIdToDelete = $_POST['topic'];
+        $topicIdToDelete = $_POST['id'];
         
         foreach ($topics as $key => $value) {
             if ($value->id == $topicIdToDelete) {
@@ -56,7 +56,7 @@ if (isset($_POST['action'])) {
     foreach ($topics as $value) {
      echo '<li>'. $value->name . '
      <form method="post">
-     <input type="hidden" name="topic" value="'. $value->id . '">
+     <input type="hidden" name="id" value="'. $value->id . '">
      <input type="hidden" name="action" value="delete">
      <input type="submit" value="Törlés">
      </form>   
