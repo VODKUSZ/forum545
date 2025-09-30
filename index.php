@@ -53,25 +53,30 @@ if (isset($_POST['action'])) {
     <title>Fórum</title>
 </head>
 <body>
-    <h1>Témák:</h1>
-    <ol>
+
     <?php
+    if (!isset($_GET['topic'])){
+    echo '<h1>Témák:</h1> <ol>';
     foreach ($topics as $value) {
-     echo '<li>'. $value->name . ' ' . $value->time .'
+     echo '<li><a href="index.php?topic=' . $value->id . '"> '. $value->name . '</a><br>'. $value->time .'
      <form method="post">
      <input type="hidden" name="id" value="'. $value->id . '">
      <input type="hidden" name="action" value="delete">
      <input type="submit" value="Törlés">
      </form>   
      ';
-        
      }
-    ?>
-    </ol>
+     echo '</ol>';
+     echo'
     <form method="post">
-         <input type="hidden" name="action" value="add">
+        <input type="hidden" name="action" value="add">
         <input type="text" name="topic" placeholder="Új téma" autofocus>
         <input type="submit" value="Add" >
-    </form>
+    </form>';
+    } else{
+        echo '<center><h1><a href=index.php>Vissza a témákhoz</a><h1><center>';
+        
+        
+    }?>
 </body>
 </html>
