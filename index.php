@@ -7,7 +7,7 @@ if(file_exists($fileName)){
 else{
     $topics=[];
 }
-
+$time = date("Y.n.j. H:i:s");
 
 if (isset($_POST['action'])) {
     if ($_POST['action'] == 'add') {
@@ -20,7 +20,8 @@ if (isset($_POST['action'])) {
         
         array_push($topics, (object)[
             "id" => $newId,
-            "name" => $_POST['topic']
+            "name" => $_POST['topic'],
+            "time" => $time,
         ]);
         //itt kezdodik a torles
     } elseif ($_POST['action'] == 'delete') {
@@ -29,7 +30,9 @@ if (isset($_POST['action'])) {
         foreach ($topics as $key => $value) {
             if ($value->id == $topicIdToDelete) {
                 unset($topics[$key]);
+                $topics = array_values($topics);
                 break;
+                
             }
         }
     }
@@ -54,7 +57,7 @@ if (isset($_POST['action'])) {
     <ol>
     <?php
     foreach ($topics as $value) {
-     echo '<li>'. $value->name . '
+     echo '<li>'. $value->name . ' ' . $value->time .'
      <form method="post">
      <input type="hidden" name="id" value="'. $value->id . '">
      <input type="hidden" name="action" value="delete">
